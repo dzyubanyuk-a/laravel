@@ -38,6 +38,16 @@
             @endif
 
             <form action="/create" method="POST">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div><br />
+                @endif
+
                 @csrf
                 <h3>Создание</h3>
                 <p><label>Название:</label></p>

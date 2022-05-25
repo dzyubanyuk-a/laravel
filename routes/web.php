@@ -18,3 +18,5 @@ Route::get('/', [App\Http\Controllers\CodeController::class, 'index'])->name('in
 Auth::routes();
 
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
+
+Route::post('/create', [App\Http\Controllers\CodeController::class, 'create'])->name('create');
