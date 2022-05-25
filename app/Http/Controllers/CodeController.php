@@ -18,4 +18,9 @@ class CodeController extends Controller
         CodeViewModel::createCode($request);
         return redirect('/');
     }
+
+    public function show($token)
+    {
+        return view('code', ['code'=>CodeViewModel::show($token)]);
+    }
 }

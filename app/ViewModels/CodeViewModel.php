@@ -57,4 +57,9 @@ class CodeViewModel
         return $arrCodes;
 
     }
+
+    public static function show($token)
+    {
+        return DB::table('codes')->join('languages', 'codes.id_language', '=', 'languages.id')->select( 'codes.*', 'languages.*')->where('token', $token)->get();
+    }
 }
