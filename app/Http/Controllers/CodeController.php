@@ -10,7 +10,7 @@ class CodeController extends Controller
 {
     public function index()
     {
-        return view('main',['languages' =>CodeViewModel::getLanguages(), 'activities'=>CodeViewModel::getActivities(),'accesses'=>CodeViewModel::getAccesses()]);
+        return view('main',['languages' =>CodeViewModel::getLanguages(), 'activities'=>CodeViewModel::getActivities(),'accesses'=>CodeViewModel::getAccesses(), 'codes' => CodeViewModel::getCodes()]);
     }
 
     public function create(CreateCodeRequest $request)

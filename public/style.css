@@ -5,4 +5,11 @@ body{
     width: 400px;
     padding: 20px;
     background: #e2e8f0;
+    float:left;
+}
+
+.public_codes{
+    padding: 20px;
+    background: #e2e8f0;
+
 }

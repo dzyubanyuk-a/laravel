@@ -97,7 +97,15 @@
                 </p>
                 <p><input type="submit" value="Сохранить"></p>
             </form>
-
         </div>
+
+        <div class = "public_codes">
+            <h3>Список последних 10 публичных записей</h3>
+            @foreach ($codes as $code)
+
+                <p><label>Название кода: </label><a href="/{{$code->token}}">{{$code->title}}</a></p
+            @endforeach
+        </div>
+
     </body>
 </html>
