@@ -37,6 +37,43 @@
             @endif
 
 
+            <form action="/create" method="POST">
+                @csrf
+
+                <p><label>Название:</label></p>
+                <p><input type="text" name="title"></p>
+                <p><label>Код:</label></p>
+                <p><textarea name = "code" rows="10" cols="45"></textarea></p>
+
+                <p><label>Выбирите язык:</label></p>
+                <p>
+                    <select name="language">
+                        <option value=""></option>
+                        <option value="1">PHP</option>
+                        <option value="2">C++</option>
+                    </select>
+                </p>
+
+                <p><label>Выбирите время активности:</label></p>
+                <p>
+                    <select name="activity">
+                        <option value=""></option>
+                        <option value="1">10 минут</option>
+                        <option value="2">60 минут</option>
+                    </select>
+                </p>
+
+                <p><label>Выбирите вид доступа:</label></p>
+                <p>
+                    <select name="access">
+                        <option value=""></option>
+                        <option value="1">Public</option>
+                        <option value="2">Private</option>
+                    </select>
+                </p>
+                <p><input type="submit" value="Сохранить"></p>
+            </form>
+
         </div>
     </body>
 </html>
