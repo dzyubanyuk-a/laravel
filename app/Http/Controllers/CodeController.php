@@ -10,7 +10,7 @@ class CodeController extends Controller
 {
     public function index()
     {
-        return view('main',['languages' =>CodeViewModel::getLanguages(), 'activities'=>CodeViewModel::getActivities(),'accesses'=>CodeViewModel::getAccesses(), 'codes' => CodeViewModel::getCodes()]);
+        return view('main',['languages' =>CodeViewModel::getLanguages(), 'activities'=>CodeViewModel::getActivities(),'accesses'=>CodeViewModel::getAccesses(), 'codes' => CodeViewModel::getCodes(), 'user_codes' => CodeViewModel::getCodesUser()]);
     }
 
     public function create(CreateCodeRequest $request)
@@ -22,5 +22,10 @@ class CodeController extends Controller
     public function show($token)
     {
         return view('code', ['code'=>CodeViewModel::show($token)]);
+    }
+
+    public function getlist()
+    {
+        return view('list', ['codes'=>CodeViewModel::showlist()]);
     }
 }

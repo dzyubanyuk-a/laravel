@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,7 +22,6 @@ Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])
 
 Route::post('/create', [App\Http\Controllers\CodeController::class, 'create'])->name('create');
 
-
-
+Route::get('/list', [App\Http\Controllers\CodeController::class, 'getlist']);
 
 Route::get('/{token}', [App\Http\Controllers\CodeController::class, 'show']);

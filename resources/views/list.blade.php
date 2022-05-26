@@ -40,10 +40,14 @@
             @endauth
         </div>
     @endif
-        @foreach ($code as $code_filter)
-            <pre><code class = "{{$code_filter->language}}">{{$code_filter->code}}</code></pre>
-@endforeach
 
+
+        @foreach ($codes as $code)
+
+            <p><label>Название кода: </label><a href="/{{$code->token}}">{{$code->title}}</a></p
+        @endforeach
+
+{{$codes->render()}}
 
 </body>
 </html>

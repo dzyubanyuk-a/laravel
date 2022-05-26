@@ -106,6 +106,14 @@
                 <p><label>Название кода: </label><a href="/{{$code->token}}">{{$code->title}}</a></p
             @endforeach
         </div>
+        @auth
+        <div class = "codes_user">
+            <h3>Список последних 10 записей пользователя</h3>
+            @foreach ($user_codes as $code)
 
+                <p><label>Название кода: </label><a href="/{{$code->token}}">{{$code->title}}</a></p
+            @endforeach
+        </div>
+        @endauth
     </body>
 </html>

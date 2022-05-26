@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Illuminate\Pagination\Paginator;
 
 class CodeViewModel
 {
@@ -52,6 +53,8 @@ class CodeViewModel
             $endTime = $time->addMinutes($code->activity);
             if($endTime>Carbon::now()){
                 $arrCodes[] = $code;
+            }else{
+                break;
             }
         }
         return $arrCodes;
@@ -62,4 +65,25 @@ class CodeViewModel
     {
         return DB::table('codes')->join('languages', 'codes.id_language', '=', 'languages.id')->select( 'codes.*', 'languages.*')->where('token', $token)->get();
     }
+
+    public static function getCodesUser()
+    {
+        return DB::table('codes')->join('activities', 'codes.id_activity', '=',
+            'activities.id')->select( 'codes.*', 'activities.*')
+            ->where('id_user', '=', Auth::id())
+            ->whereRaw('NOW() <= DATE_ADD(created_at, INTERVAL activity MINUTE)')
+            ->limit(10)->orderBy('codes.id', 'desc')->orderBy('created_at', 'desc')->get();
+    }
+
+    public static function showlist()
+    {
+        return DB::table('codes')->join('activities', 'codes.id_activity', '=',
+            'activities.id')->select( 'codes.*', 'activities.*')
+            ->where('id_user', '=', Auth::id())->whereRaw('NOW() <= DATE_ADD(created_at, INTERVAL activity MINUTE)')->orderBy('created_at', 'desc')->simplePaginate(10);
+
+    }
+
+
+
+
 }
