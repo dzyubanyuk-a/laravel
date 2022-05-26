@@ -21,7 +21,7 @@
     </div>
 
 
-
+    <p><label>Список всех кодов пользователя: </label><a href="/list">Открыть</a></p>
     <div class = "public_codes">
         <h3>Список последних 10 публичных записей</h3>
         @foreach ($codes as $code)

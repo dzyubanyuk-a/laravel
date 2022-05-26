@@ -18,10 +18,10 @@ Route::get('/', [App\Http\Controllers\CodeController::class, 'index'])->name('in
 
 Auth::routes();
 
-Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
+Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile')->middleware('auth');
 
 Route::post('/create', [App\Http\Controllers\CodeController::class, 'create'])->name('create');
 
-Route::get('/list', [App\Http\Controllers\CodeController::class, 'getlist']);
+Route::get('/list', [App\Http\Controllers\CodeController::class, 'getlist'])->middleware('auth');
 
-Route::get('/{token}', [App\Http\Controllers\CodeController::class, 'show']);
+Route::get('/{token}', [App\Http\Controllers\CodeController::class, 'show'])->name('token');;

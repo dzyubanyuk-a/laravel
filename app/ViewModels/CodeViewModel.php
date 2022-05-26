@@ -39,31 +39,28 @@ class CodeViewModel
         $role->id_user = Auth::check() ? Auth::id() : 0;
         $role->token = Str::random(40);
         $role->save();
+
     }
 
     public static function getCodes()
     {
 
-        $codes = DB::table('codes')->join('activities', 'codes.id_activity', '=', 'activities.id')->select( 'codes.*', 'activities.*')->where('id_access', 1)->limit(10)->orderBy('codes.id', 'desc')->get();
+        return $x = DB::table('codes')->join('activities', 'codes.id_activity', '=', 'activities.id')
+            ->select( 'codes.*', 'activities.*')
+            ->where('codes.id_access', '=',1)->whereRaw('NOW() <= DATE_ADD(created_at, INTERVAL activity MINUTE)')
+            ->limit(10)->orderBy('codes.id', 'desc')->get();
 
-        $arrCodes = [];
 
-        foreach ($codes as $code) {
-            $time = Carbon::parse($code->created_at);
-            $endTime = $time->addMinutes($code->activity);
-            if($endTime>Carbon::now()){
-                $arrCodes[] = $code;
-            }else{
-                break;
-            }
-        }
-        return $arrCodes;
 
     }
 
     public static function show($token)
     {
-        return DB::table('codes')->join('languages', 'codes.id_language', '=', 'languages.id')->select( 'codes.*', 'languages.*')->where('token', $token)->get();
+        return DB::table('codes')->join('languages', 'codes.id_language', '=', 'languages.id')
+            ->select( 'codes.*', 'languages.*')->where('token', $token)->get();
+
+
+
     }
 
     public static function getCodesUser()
