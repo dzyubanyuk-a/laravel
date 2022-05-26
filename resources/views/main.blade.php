@@ -65,12 +65,13 @@
                     </select>
                 </p>
 
+
                 <p><label>Выбирите время активности:</label></p>
                 <p>
                     <select name="activity">
                         <option value=""></option>
                         @foreach ($activities as $activity)
-                            <option value="{{$activity->id}}">{{$activity->activity}}</option>
+                            <option value="{{$activity->id}}">{{$activity->arr_activity}}</option>
                         @endforeach
                     </select>
                 </p>

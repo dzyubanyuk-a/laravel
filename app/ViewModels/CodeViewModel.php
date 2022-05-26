@@ -22,6 +22,8 @@ class CodeViewModel
         return DB::table('activities')->get();
     }
 
+
+
     public static function getAccesses()
     {
         return DB::table('accesses')->get();
@@ -45,9 +47,9 @@ class CodeViewModel
     public static function getCodes()
     {
 
-        return $x = DB::table('codes')->join('activities', 'codes.id_activity', '=', 'activities.id')
+        return DB::table('codes')->join('activities', 'codes.id_activity', '=', 'activities.id')
             ->select( 'codes.*', 'activities.*')
-            ->where('codes.id_access', '=',1)->whereRaw('NOW() <= DATE_ADD(created_at, INTERVAL activity MINUTE)')
+            ->where('codes.id_access', '=',1)->whereRaw('(NOW() <= DATE_ADD(created_at, INTERVAL activity MINUTE)) OR (activities.activity =0)')
             ->limit(10)->orderBy('codes.id', 'desc')->get();
 
 
@@ -68,7 +70,7 @@ class CodeViewModel
         return DB::table('codes')->join('activities', 'codes.id_activity', '=',
             'activities.id')->select( 'codes.*', 'activities.*')
             ->where('id_user', '=', Auth::id())
-            ->whereRaw('NOW() <= DATE_ADD(created_at, INTERVAL activity MINUTE)')
+            ->whereRaw('(NOW() <= DATE_ADD(created_at, INTERVAL activity MINUTE)) OR (activities.activity =0)')
             ->limit(10)->orderBy('codes.id', 'desc')->orderBy('created_at', 'desc')->get();
     }
 
@@ -76,7 +78,7 @@ class CodeViewModel
     {
         return DB::table('codes')->join('activities', 'codes.id_activity', '=',
             'activities.id')->select( 'codes.*', 'activities.*')
-            ->where('id_user', '=', Auth::id())->whereRaw('NOW() <= DATE_ADD(created_at, INTERVAL activity MINUTE)')->orderBy('created_at', 'desc')->simplePaginate(10);
+            ->where('id_user', '=', Auth::id())->whereRaw('(NOW() <= DATE_ADD(created_at, INTERVAL activity MINUTE)) OR (activities.activity =0)')->orderBy('created_at', 'desc')->simplePaginate(10);
 
     }
 
