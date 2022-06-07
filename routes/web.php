@@ -14,14 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [App\Http\Controllers\CodeController::class, 'index'])->name('index');
+Route::get('/', [\App\Http\Controllers\Paste\PasteOptionsController::class, 'index'])->name('index');
 
 Auth::routes();
 
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile')->middleware('auth');
 
-Route::post('/create', [App\Http\Controllers\CodeController::class, 'create'])->name('create');
+Route::post('/create', [\App\Http\Controllers\Paste\PasteCreateController::class, 'create'])->name('create');
 
-Route::get('/list', [App\Http\Controllers\CodeController::class, 'getlist'])->middleware('auth');
+Route::get('/list', [\App\Http\Controllers\Paste\PasteGetController::class, 'getlist'])->middleware('auth');
 
-Route::get('/{token}', [App\Http\Controllers\CodeController::class, 'show'])->name('token');;
+Route::get('/{token}', [\App\Http\Controllers\Paste\PasteGetController::class, 'show'])->name('token');;
