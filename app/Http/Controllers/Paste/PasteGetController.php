@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Paste;
 
 use App\Http\Controllers\Controller;
-use App\ViewModels\CodeViewModel;
 use App\ViewModels\PasteGetViewModel;
 
 class PasteGetController extends Controller

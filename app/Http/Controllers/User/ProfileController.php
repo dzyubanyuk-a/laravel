@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\ViewModels\CodeViewModel;
 use App\ViewModels\PasteGetViewModel;
 
 class ProfileController extends Controller
@@ -13,10 +12,11 @@ class ProfileController extends Controller
      *
      * @return void
      */
-    public function __construct()
+   /* public function __construct()
     {
         $this->middleware('auth');
     }
+   */
 
     /**
      * Show the application dashboard.

@@ -11,6 +11,7 @@ class PasteCreateController extends Controller
     public function create(CreateCodeRequest $request)
     {
         PasteCreateViewModel::createPaste($request);
+
         return redirect('/');
 
     }

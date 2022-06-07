@@ -22,7 +22,12 @@
         </style>
     </head>
     <body class="antialiased">
-    <p><label>Список всех кодов пользователя: </label><a href="/list">Открыть</a></p>
+    <p><label>Список всех кодов пользователя: </label><a href="/list">Открыть</a>
+
+
+
+    </p>
+
         <div class="create">
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">

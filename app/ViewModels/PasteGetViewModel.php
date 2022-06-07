@@ -5,7 +5,6 @@ namespace App\ViewModels;
 
 use App\Models\Paste;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class PasteGetViewModel
 {
