@@ -57,7 +57,8 @@
                 <p><textarea name = "code" rows="10" cols="45"></textarea></p>
 
                 <p><label>Выбирите язык:</label></p>
-                <p>
+
+                 <p>
                     <select name="language">
                         <option value=""></option>
                         @foreach ($languages as $language)
@@ -66,7 +67,10 @@
                     </select>
                 </p>
 
+            <?php
+                dd($codes);
 
+            ?>
                 <p><label>Выбирите время активности:</label></p>
                 <p>
                     <select name="activity">

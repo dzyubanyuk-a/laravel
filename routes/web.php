@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Paste\PasteCreateController;
+use App\Http\Controllers\Paste\PasteGetController;
+use App\Http\Controllers\Paste\PasteOptionsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -14,14 +17,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\Paste\PasteOptionsController::class, 'index'])->name('index');
+Route::get('/', [PasteOptionsController::class, 'index'])->name('index');
 
 Auth::routes();
 
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile')->middleware('auth');
 
-Route::post('/create', [\App\Http\Controllers\Paste\PasteCreateController::class, 'create'])->name('create');
+Route::post('/create', [PasteCreateController::class, 'create'])->name('create');
 
-Route::get('/list', [\App\Http\Controllers\Paste\PasteGetController::class, 'getlist'])->middleware('auth');
+Route::get('/list', [PasteGetController::class, 'getlist'])->middleware('auth');
 
-Route::get('/{token}', [\App\Http\Controllers\Paste\PasteGetController::class, 'show'])->name('token');;
+Route::get('/{token}', [PasteGetController::class, 'show'])->name('token');;

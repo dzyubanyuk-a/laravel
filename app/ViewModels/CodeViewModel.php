@@ -3,7 +3,10 @@
 namespace App\ViewModels;
 
 use App\Http\Requests\CreateCodeRequest;
+use App\Models\Access;
+use App\Models\Activity;
 use App\Models\Code;
+use App\Models\Language;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -12,22 +15,7 @@ use Illuminate\Pagination\Paginator;
 
 class CodeViewModel
 {
-    public static function getLanguages()
-    {
-        return DB::table('languages')->get();
-    }
 
-    public static function getActivities()
-    {
-        return DB::table('activities')->get();
-    }
-
-
-
-    public static function getAccesses()
-    {
-        return DB::table('accesses')->get();
-    }
 
     public static function createCode(CreateCodeRequest $request)
     {

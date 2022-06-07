@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Paste;
 
+use App\Http\Controllers\Controller;
 use App\ViewModels\CodeViewModel;
 
-class PasteGetController extends \App\Http\Controllers\Controller
+class PasteGetController extends Controller
 {
     public function show($token)
     {
