@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
 use App\ViewModels\CodeViewModel;
-use Illuminate\Http\Request;
+use App\ViewModels\PasteGetViewModel;
 
 class ProfileController extends Controller
 {
@@ -24,7 +25,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('profile',[ 'codes' => CodeViewModel::getCodes(), 'user_codes' => CodeViewModel::getCodesUser()]);
+        return view('profile',[ 'pastes' => PasteGetViewModel::getPastes(), 'user_pastes' => PasteGetViewModel::getPastesUser()]);
 
     }
 }

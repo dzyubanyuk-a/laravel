@@ -35,10 +35,6 @@ class PasteGetViewModel
 
     public static function show($token)
     {
-       // return DB::table('codes')->join('languages', 'codes.id_language', '=', 'languages.id')
-         //   ->select( 'codes.*', 'languages.*')->where('token', $token)->get();
-
-
         return Paste::select( 'pastes.*', 'languages.*')
             ->join('languages', 'pastes.id_language', '=', 'languages.id')
             ->where('token', $token)->get();

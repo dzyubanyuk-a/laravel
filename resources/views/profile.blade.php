@@ -24,17 +24,17 @@
     <p><label>Список всех кодов пользователя: </label><a href="/list">Открыть</a></p>
     <div class = "public_codes">
         <h3>Список последних 10 публичных записей</h3>
-        @foreach ($codes as $code)
+        @foreach ($pastes as $paste)
 
-            <p><label>Название кода: </label><a href="/{{$code->token}}">{{$code->title}}</a></p
+            <p><label>Название кода: </label><a href="/{{$paste->token}}">{{$paste->title}}</a></p
         @endforeach
     </div>
 
     <div class = "codes_user">
         <h3>Список последних 10 записей пользователя</h3>
-        @foreach ($user_codes as $code)
+        @foreach ($user_pastes as $paste)
 
-            <p><label>Название кода: </label><a href="/{{$code->token}}">{{$code->title}}</a></p
+            <p><label>Название кода: </label><a href="/{{$paste->token}}">{{$paste->title}}</a></p
         @endforeach
 
 

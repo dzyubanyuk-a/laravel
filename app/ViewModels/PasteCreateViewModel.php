@@ -3,24 +3,16 @@
 namespace App\ViewModels;
 
 use App\Http\Requests\CreateCodeRequest;
-use App\Models\Access;
-use App\Models\Activity;
-use App\Models\Code;
-use App\Models\Language;
-use Carbon\Carbon;
+use App\Models\Paste;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use Illuminate\Pagination\Paginator;
 
-class CodeViewModel
+class PasteCreateViewModel
 {
-
-
-    public static function createCode(CreateCodeRequest $request)
+    public static function createPaste(CreateCodeRequest $request)
     {
 
-        $role= new Code();
+        $role= new Paste();
         $role->title = $request->get('title');
         $role->code = $request->get('code');
         $role->id_language = $request->get('language');
@@ -31,18 +23,4 @@ class CodeViewModel
         $role->save();
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

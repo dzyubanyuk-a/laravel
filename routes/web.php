@@ -21,7 +21,7 @@ Route::get('/', [PasteOptionsController::class, 'index'])->name('index');
 
 Auth::routes();
 
-Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile')->middleware('auth');
+Route::get('/profile', [\App\Http\Controllers\User\ProfileController::class, 'index'])->name('profile')->middleware('auth');
 
 Route::post('/create', [PasteCreateController::class, 'create'])->name('create');
 
