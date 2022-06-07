@@ -42,12 +42,12 @@
     @endif
 
 
-        @foreach ($codes as $code)
+        @foreach ($pastes as $paste)
 
-            <p><label>Название кода: </label><a href="/{{$code->token}}">{{$code->title}}</a></p
+            <p><label>Название кода: </label><a href="/{{$paste->token}}">{{$paste->title}}</a></p
         @endforeach
 
-{{$codes->render()}}
+{{$pastes->render()}}
 
 </body>
 </html>

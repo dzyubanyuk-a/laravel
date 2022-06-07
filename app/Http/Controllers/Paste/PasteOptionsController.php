@@ -13,6 +13,6 @@ class PasteOptionsController extends Controller
     {
         return view('main',['languages' =>PasteOptionsViewModel::getLanguages(),
             'activities'=>PasteOptionsViewModel::getActivities(),'accesses'=>PasteOptionsViewModel::getAccesses(),
-            'codes' => PasteGetViewModel::getCodes(), 'user_codes' => CodeViewModel::getCodesUser()]);
+            'pastes' => PasteGetViewModel::getPastes(), 'user_pastes' => PasteGetViewModel::getPastesUser()]);
     }
 }

@@ -48,17 +48,17 @@
 
 
 
-            @foreach ($code as $code_filter)
-                @if($code_filter->id_access == 3)
+            @foreach ($paste as $paste_filter)
+                @if($paste_filter->id_access == 3)
 
                     @if(Auth::check())
-                        @if($code_filter->id_user == Auth::user()->id)
-                            <pre><code class = "{{$code_filter->language}}">{{$code_filter->code}}</code></pre>
+                        @if($paste_filter->id_user == Auth::user()->id)
+                            <pre><code class = "{{$paste_filter->language}}">{{$paste_filter->code}}</code></pre>
                         @endif
 
                     @endif
                 @else
-                        <pre><code class = "{{$code_filter->language}}">{{$code_filter->code}}</code></pre>
+                        <pre><code class = "{{$paste_filter->language}}">{{$paste_filter->code}}</code></pre>
                 @endif
             @endforeach
 

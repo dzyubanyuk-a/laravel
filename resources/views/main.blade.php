@@ -67,10 +67,7 @@
                     </select>
                 </p>
 
-            <?php
-                dd($codes);
 
-            ?>
                 <p><label>Выбирите время активности:</label></p>
                 <p>
                     <select name="activity">
@@ -107,17 +104,17 @@
 
         <div class = "public_codes">
             <h3>Список последних 10 публичных записей</h3>
-            @foreach ($codes as $code)
+            @foreach ($pastes as $paste)
 
-                <p><label>Название кода: </label><a href="/{{$code->token}}">{{$code->title}}</a></p
+                <p><label>Название кода: </label><a href="/{{$paste->token}}">{{$paste->title}}</a></p
             @endforeach
         </div>
         @auth
         <div class = "codes_user">
             <h3>Список последних 10 записей пользователя</h3>
-            @foreach ($user_codes as $code)
+            @foreach ($user_pastes as $user_paste)
 
-                <p><label>Название кода: </label><a href="/{{$code->token}}">{{$code->title}}</a></p
+                <p><label>Название кода: </label><a href="/{{$user_paste->token}}">{{$user_paste->title}}</a></p
             @endforeach
         </div>
         @endauth

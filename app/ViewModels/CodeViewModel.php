@@ -32,43 +32,15 @@ class CodeViewModel
 
     }
 
-    public static function getCodes()
-    {
-
-        return DB::table('codes')->join('activities', 'codes.id_activity', '=', 'activities.id')
-            ->select( 'codes.*', 'activities.*')
-            ->where('codes.id_access', '=',1)->whereRaw('(NOW() <= DATE_ADD(created_at, INTERVAL activity MINUTE)) OR (activities.activity =0)')
-            ->limit(10)->orderBy('codes.id', 'desc')->get();
 
 
 
-    }
-
-    public static function show($token)
-    {
-        return DB::table('codes')->join('languages', 'codes.id_language', '=', 'languages.id')
-            ->select( 'codes.*', 'languages.*')->where('token', $token)->get();
 
 
 
-    }
 
-    public static function getCodesUser()
-    {
-        return DB::table('codes')->join('activities', 'codes.id_activity', '=',
-            'activities.id')->select( 'codes.*', 'activities.*')
-            ->where('id_user', '=', Auth::id())
-            ->whereRaw('(NOW() <= DATE_ADD(created_at, INTERVAL activity MINUTE)) OR (activities.activity =0)')
-            ->limit(10)->orderBy('codes.id', 'desc')->orderBy('created_at', 'desc')->get();
-    }
 
-    public static function showlist()
-    {
-        return DB::table('codes')->join('activities', 'codes.id_activity', '=',
-            'activities.id')->select( 'codes.*', 'activities.*')
-            ->where('id_user', '=', Auth::id())->whereRaw('(NOW() <= DATE_ADD(created_at, INTERVAL activity MINUTE)) OR (activities.activity =0)')->orderBy('created_at', 'desc')->simplePaginate(10);
 
-    }
 
 
 
