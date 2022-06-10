@@ -17,14 +17,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [PasteOptionsController::class, 'index'])->name('index');
+Route::get('/', [PasteOptionsController::class, 'index'])
+    ->name('index');
 
 Auth::routes();
 
-Route::get('/profile', [\App\Http\Controllers\User\ProfileController::class, 'index'])->name('profile')->middleware('auth');
+Route::get('/profile', [\App\Http\Controllers\User\ProfileController::class, 'index'])
+    ->name('profile')
+    ->middleware('auth');
 
-Route::post('/create', [PasteCreateController::class, 'create'])->name('create');
+Route::post('/create', [PasteCreateController::class, 'create'])
+    ->name('create');
 
-Route::get('/list', [PasteGetController::class, 'getlist'])->middleware('auth');
+Route::get('/list', [PasteGetController::class, 'getlist'])
+    ->name('list')
+    ->middleware('auth');
 
-Route::get('/{token}', [PasteGetController::class, 'show'])->name('token');;
+Route::get('/{token}', [PasteGetController::class, 'show'])
+    ->name('token');;

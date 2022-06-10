@@ -30,7 +30,7 @@
     @if (Route::has('login'))
         <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
             @auth
-                <a href="{{ url('/profile') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Профиль</a>
+                <a href="{{ route('profile') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Профиль</a>
             @else
                 <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Авторизация</a>
 
@@ -44,7 +44,10 @@
 
         @foreach ($pastes as $paste)
 
-            <p><label>Название кода: </label><a href="/{{$paste->token}}">{{$paste->title}}</a></p
+            <p>
+                <label>Название кода: </label>
+                    <a href="{{ route('token', ['token'=> $paste->token])}}">{{$paste->title}}</a>
+            </p
         @endforeach
 
 {{$pastes->render()}}

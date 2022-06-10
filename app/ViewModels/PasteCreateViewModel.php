@@ -12,15 +12,15 @@ class PasteCreateViewModel
     public static function createPaste(CreateCodeRequest $request)
     {
 
-        $role= new Paste();
-        $role->title = $request->get('title');
-        $role->paste = $request->get('paste');
-        $role->language_id = $request->get('language');
-        $role->activity_id = $request->get('activity');
-        $role->access_id = $request->get('access');
-        $role->user_id = Auth::check() ? Auth::id() : 0;
-        $role->token = Str::random(40);
-        $role->save();
+        $paste = new Paste();
+        $paste->title = $request->get('title');
+        $paste->paste = $request->get('paste');
+        $paste->language_id = $request->get('language');
+        $paste->activity_id = $request->get('activity');
+        $paste->access_id = $request->get('access');
+        $paste->user_id = Auth::check() ? Auth::id() : 0;
+        $paste->token = Str::random(40);
+        $paste->save();
 
     }
 }

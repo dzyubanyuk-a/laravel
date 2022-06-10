@@ -22,8 +22,9 @@
         </style>
     </head>
     <body class="antialiased">
-    <p><label>Список всех кодов пользователя: </label><a href="/list">Открыть</a>
-
+    @auth
+    <p><label>Список всех кодов пользователя: </label><a href="{{ route('list') }}">Открыть</a>
+        @endauth
 
 
     </p>
@@ -32,7 +33,7 @@
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
-                        <a href="{{ url('/profile') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Профиль</a>
+                        <a href="{{ route('profile') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Профиль</a>
                     @else
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Авторизация</a>
 
@@ -111,7 +112,10 @@
             <h3>Список последних 10 публичных записей</h3>
             @foreach ($pastes as $paste)
 
-                <p><label>Название кода: </label><a href="/{{$paste->token}}">{{$paste->title}}</a></p
+                <p>
+                    <label>Название кода: </label>
+                        <a href="{{ route('token', ['token'=> $paste->token])}}">{{$paste->title}}</a>
+                </p
             @endforeach
         </div>
         @auth
@@ -119,7 +123,10 @@
             <h3>Список последних 10 записей пользователя</h3>
             @foreach ($user_pastes as $user_paste)
 
-                <p><label>Название кода: </label><a href="/{{$user_paste->token}}">{{$user_paste->title}}</a></p
+                <p>
+                    <label>Название кода: </label>
+                        <a href="{{ route('token', ['token'=> $paste->token])}}">{{$user_paste->title}}</a>
+                </p
             @endforeach
         </div>
         @endauth

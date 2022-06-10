@@ -26,7 +26,7 @@
         <h3>Список последних 10 публичных записей</h3>
         @foreach ($pastes as $paste)
 
-            <p><label>Название кода: </label><a href="/{{$paste->token}}">{{$paste->title}}</a></p
+            <p><label>Название кода: </label><a href="{{ route('token', ['token'=> $paste->token])}}">{{$paste->title}}</a></p
         @endforeach
     </div>
 
@@ -34,7 +34,7 @@
         <h3>Список последних 10 записей пользователя</h3>
         @foreach ($user_pastes as $paste)
 
-            <p><label>Название кода: </label><a href="/{{$paste->token}}">{{$paste->title}}</a></p
+            <p><label>Название кода: </label><a href="{{ route('token', ['token'=> $paste->token])}}">{{$paste->title}}</a></p
         @endforeach
 
 
