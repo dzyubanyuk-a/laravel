@@ -13,16 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('codes', function (Blueprint $table) {
+        Schema::create('pastes', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('code');
-            $table->integer('id_language');
-            $table->integer('id_activity');
-            $table->integer('id_access');
+            $table->text('paste');
+            $table->integer('language_id');
+            $table->integer('activity_id');
+            $table->integer('access_id');
             $table->string('token');
-            $table->integer('id_user');
+            $table->integer('user_id');
             $table->timestamps();
+
+            $table->softDeletes();
         });
     }
 

@@ -59,7 +59,7 @@
                 <p><label>Название:</label></p>
                 <p><input type="text" name="title"></p>
                 <p><label>Код:</label></p>
-                <p><textarea name = "code" rows="10" cols="45"></textarea></p>
+                <p><textarea name = "paste" rows="10" cols="45"></textarea></p>
 
                 <p><label>Выбирите язык:</label></p>
 

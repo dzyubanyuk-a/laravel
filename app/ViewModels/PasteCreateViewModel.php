@@ -14,11 +14,11 @@ class PasteCreateViewModel
 
         $role= new Paste();
         $role->title = $request->get('title');
-        $role->code = $request->get('code');
-        $role->id_language = $request->get('language');
-        $role->id_activity = $request->get('activity');
-        $role->id_access = $request->get('access');
-        $role->id_user = Auth::check() ? Auth::id() : 0;
+        $role->paste = $request->get('paste');
+        $role->language_id = $request->get('language');
+        $role->activity_id = $request->get('activity');
+        $role->access_id = $request->get('access');
+        $role->user_id = Auth::check() ? Auth::id() : 0;
         $role->token = Str::random(40);
         $role->save();
 
