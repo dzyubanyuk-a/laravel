@@ -7,15 +7,24 @@ use App\ViewModels\PasteGetTokenViewModel;
 use App\ViewModels\PasteGetViewModel;
 use App\ViewModels\PasteOptionsViewModel;
 
-class PasteOptionsController extends Controller
+class PasteOptionsController extends BaseController
 {
     public function index()
     {
-        return view('main',['languages' =>PasteOptionsViewModel::getLanguages(),
-            'activities'=>PasteOptionsViewModel::getActivities(),
-            'accesses'=>PasteOptionsViewModel::getAccesses(),
-            'pastes' => PasteGetViewModel::getPastes(),
-            'user_pastes' => PasteGetViewModel::getPastesUser(),
+        $languages = $this->PasteOptionsService->getLanguages();
+        $activities = $this->PasteOptionsService->getActivities();
+        $accesses = $this->PasteOptionsService->getAccesses();
+        $pastesPublic = $this->PastesGetService->getPastesPublic();
+        $pastesUser = $this->PastesGetService->getPastesUser();
+
+
+
+        return view('main',[
+            'languages' => $languages,
+            'activities' => $activities,
+            'accesses'=>$accesses,
+            'pastes' => $pastesPublic,
+            'user_pastes' => $pastesUser,
         ]);
     }
 }

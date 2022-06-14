@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Paste\BaseController;
 use App\ViewModels\PasteGetViewModel;
 
-class ProfileController extends Controller
+class ProfileController extends BaseController
 {
     /**
      * Create a new controller instance.
@@ -18,6 +19,7 @@ class ProfileController extends Controller
     }
    */
 
+
     /**
      * Show the application dashboard.
      *
@@ -25,7 +27,13 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('profile',[ 'pastes' => PasteGetViewModel::getPastes(), 'user_pastes' => PasteGetViewModel::getPastesUser()]);
+        $pastesPublic = $this->PastesGetService->getPastesPublic();
+        $pastesUser = $this->PastesGetService->getPastesUser();
+
+
+        return view('profile',[
+            'pastes' => $pastesPublic,
+            'user_pastes' => $pastesUser]);
 
     }
 }

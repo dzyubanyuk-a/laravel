@@ -33,4 +33,23 @@ class CreateCodeRequest extends FormRequest
         ];
 
     }
+
+    /**
+     * Получить сообщения об ошибках для определенных правил валидации.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'title.required' => 'Поле title не заполнено!',
+            'paste.required' => 'Поле paste не заполнено!',
+            'language.required' => 'Поле language не выбрано!',
+            'activity.required' => 'Поле activity не выбрано!',
+            'access.required' => 'Поле access не выбрано!'
+
+        ];
+    }
+
+
 }

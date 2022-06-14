@@ -5,15 +5,14 @@ namespace App\Http\Controllers\Paste;
 use App\Http\Controllers\Controller;
 use App\ViewModels\PasteGetViewModel;
 
-class PasteGetController extends Controller
+class PasteGetController extends BaseController
 {
     public function show($token)
     {
-        return view('paste', ['paste'=>PasteGetViewModel::show($token)]);
-    }
+        $paste = $this->PasteGetService->show($token);
 
-    public function getlist()
-    {
-        return view('list', ['pastes'=>PasteGetViewModel::showlist()]);
+        return view('paste', [
+            'paste'=>$paste
+        ]);
     }
 }

@@ -1,15 +1,21 @@
 <?php
 
-namespace App\ViewModels;
+namespace App\services\Paste;
 
 use App\Http\Requests\CreateCodeRequest;
+use App\Models\Access;
+use App\Models\Activity;
+use App\Models\Language;
 use App\Models\Paste;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
+use Auth;
+use Illuminate\Database\Eloquent\Collection;
+use Str;
 
-class PasteCreateViewModel
+
+class PasteCreateService
 {
-    public static function createPaste(CreateCodeRequest $request)
+
+    public function createPaste(CreateCodeRequest $request)
     {
 
         $paste = new Paste();
