@@ -11,20 +11,24 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('pastes', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('title');
             $table->text('paste');
-            $table->integer('language_id');
-            $table->integer('activity_id');
-            $table->integer('access_id');
+            $table->unsignedBigInteger('language_id');
+            $table->unsignedBigInteger('access_id');
+            $table->unsignedBigInteger('activity_id');
             $table->string('token');
             $table->integer('user_id');
             $table->timestamps();
 
             $table->softDeletes();
+
+            $table->foreign('language_id')->references('id')->on('languages');
+            $table->foreign('access_id')->references('id')->on('accesses');
+            $table->foreign('activity_id')->references('id')->on('activities');
         });
     }
 
@@ -33,8 +37,8 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('codes');
+        Schema::dropIfExists('pastes');
     }
 };

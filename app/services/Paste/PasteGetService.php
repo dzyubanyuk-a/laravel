@@ -14,9 +14,12 @@ class PasteGetService
 
     public function show($token):Collection
     {
-        return Paste::join('languages', 'pastes.language_id', '=', 'languages.id')
+
+
+        return Paste::query()
+            ->with(['language'])
             ->where('pastes.token', $token)
-            ->get(['pastes.paste','languages.language']);
+            ->get(['pastes.paste']);
 
     }
 }
