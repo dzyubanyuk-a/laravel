@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('accesses', function (Blueprint $table) {
             $table->id();
             $table->integer('access');
+            $table->timestamps();
+
         });
     }
 

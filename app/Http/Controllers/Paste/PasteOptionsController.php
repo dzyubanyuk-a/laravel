@@ -3,9 +3,7 @@
 namespace App\Http\Controllers\Paste;
 
 use App\Http\Controllers\Controller;
-use App\ViewModels\PasteGetTokenViewModel;
-use App\ViewModels\PasteGetViewModel;
-use App\ViewModels\PasteOptionsViewModel;
+
 
 class PasteOptionsController extends BaseController
 {

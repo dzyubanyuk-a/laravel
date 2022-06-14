@@ -4,7 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Paste\BaseController;
-use App\ViewModels\PasteGetViewModel;
+
 
 class ProfileController extends BaseController
 {
