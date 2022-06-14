@@ -58,7 +58,7 @@
 
                     @endif
                 @else
-                        <pre><code class = "{{$paste_filter->language}}">{{$paste_filter->paste}}</code></pre>
+                        <pre><code class = "{{$paste_filter->language->language}}">{{$paste_filter->paste}}</code></pre>
                 @endif
             @endforeach
 
