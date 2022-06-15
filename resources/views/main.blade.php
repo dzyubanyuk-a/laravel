@@ -80,8 +80,10 @@
 
                     <select name="activity">
                         <option value=""></option>
-                        @foreach ($activities as $activity)
-                            <option value="{{$activity->id}}">{{$activity->activity}}</option>
+
+                        @foreach ($activities as $key => $activity)
+
+                            <option value="{{$key}}">{{$activity}}</option>
                         @endforeach
                     </select>
                 </p>
@@ -112,10 +114,13 @@
 
         <div class = "public_codes">
             <h3>Список последних 10 публичных записей</h3>
+
             @foreach ($pastes as $paste)
 
                 <p>
                     <label>Название кода: </label>
+
+
                         <a href="{{ route('token', ['token'=> $paste->token])}}">{{$paste->title}}</a>
                 </p
             @endforeach

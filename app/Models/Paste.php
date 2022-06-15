@@ -16,18 +16,18 @@ class Paste extends Model
 
     use SoftDeletes;
 
-    public function language(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function language()
     {
         return $this->belongsTo(Language::class);
     }
 
 
-    public function access(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function access()
     {
         return $this->belongsTo(Access::class);
     }
 
-    public function activity(): \Illuminate\Database\Eloquent\Relations\belongsTo
+    public function activity()
     {
         return $this->belongsTo(Activity::class);
     }

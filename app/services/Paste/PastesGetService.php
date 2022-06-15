@@ -16,8 +16,7 @@ class PastesGetService
 {
         public function getlist()
     {
-        return  Paste::query()
-            ->with('activity')
+        return  Paste::join('activities', 'pastes.activity_id', '=', 'activities.id')
             ->where('user_id', '=', Auth::id())
             ->whereRaw('(NOW() <= DATE_ADD(pastes.created_at, INTERVAL activities.activity SECOND)) OR (activities.activity =0)')
             ->orderBy('pastes.created_at', 'desc')
@@ -31,14 +30,13 @@ class PastesGetService
     public function getPastesPublic()
     {
 
-       return Paste::query()
-            ->with('activity')
-            ->where('pastes.access_id', '=', Accesses::Public)
-            ->whereRaw('(NOW() <= DATE_ADD(pastes.created_at, INTERVAL activities.activity SECOND)) OR (activities.activity = 0)')
+
+        return Paste::join('activities', 'pastes.activity_id', '=', 'activities.id')
+            ->where('pastes.access_id', '=', '1')
+            ->whereRaw('(NOW() <= DATE_ADD(pastes.created_at, INTERVAL activity SECOND)) OR (activity = 0)')
             ->limit(10)
             ->orderBy('pastes.id', 'desc')
             ->get();
-
             }
 
 
