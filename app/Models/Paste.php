@@ -16,6 +16,8 @@ class Paste extends Model
 
     use SoftDeletes;
 
+
+
     public function language()
     {
         return $this->belongsTo(Language::class);

@@ -9,6 +9,7 @@ class Activity extends Model
 {
     use HasFactory;
 
+
     public function paste()
     {
         return $this->hasOne(Paste::class);
