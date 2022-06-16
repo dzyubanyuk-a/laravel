@@ -25,17 +25,15 @@ class PasteOptionsService
     {
         $arrSecond =  Activity::all();
 
-        foreach ($arrSecond as $key => $second){
+        foreach ($arrSecond as $second){
+
             if($second->activity != '0') {
-                $arrSecond[$key] = CarbonInterval::second($second->activity)->cascade()->forHumans();
+                $arrSecond[$second->id] = CarbonInterval::second($second->activity)->cascade()->forHumans();
             }else{
-                $arrSecond[$key] = 'Без органичений';
+                $arrSecond[$second->id] = 'Без органичений';
             }
         }
-
-        return $arrSecond;
-
-
+        return $arrSecond->slice(1);
     }
 
     public function getAccesses(): Collection
