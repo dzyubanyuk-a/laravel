@@ -9,9 +9,9 @@ class Language extends Model
 {
     use HasFactory;
 
-    public function paste(): \Illuminate\Database\Eloquent\Relations\hasOne
+    public function paste()
     {
-        return $this->hasOne(Paste::class);
+        return $this->hasMany(Paste::class);
     }
 
 }

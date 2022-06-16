@@ -12,6 +12,6 @@ class Activity extends Model
 
     public function paste()
     {
-        return $this->hasOne(Paste::class);
+        return $this->hasMany(Paste::class);
     }
 }

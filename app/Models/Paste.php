@@ -23,7 +23,6 @@ class Paste extends Model
         return $this->belongsTo(Language::class);
     }
 
-
     public function access()
     {
         return $this->belongsTo(Access::class);

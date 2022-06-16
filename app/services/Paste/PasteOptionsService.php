@@ -2,6 +2,8 @@
 
 namespace App\services\Paste;
 
+use App\Domain\Enums\Accesses\Accesses;
+use App\Domain\Enums\Activities\Activities;
 use App\Models\Access;
 use App\Models\Activity;
 use App\Models\Language;
@@ -21,19 +23,20 @@ class PasteOptionsService
     /**
      * @throws \Exception
      */
-    public function getActivities(): Collection
+    public function getActivities(): array
     {
-        $arrSecond =  Activity::all();
+        $arrSecond =  Activities::cases();
 
         foreach ($arrSecond as $second){
 
-            if($second->activity != '0') {
-                $arrSecond[$second->id] = CarbonInterval::second($second->activity)->cascade()->forHumans();
+            if($second->value != '0') {
+                $arrTime[$second->value] = CarbonInterval::second($second->value)->cascade()->forHumans();
             }else{
-                $arrSecond[$second->id] = 'Без органичений';
+                $arrTime[$second->value] = 'Без органичений';
             }
         }
-        return $arrSecond->slice(1);
+
+        return $arrTime;
     }
 
     public function getAccesses(): Collection
