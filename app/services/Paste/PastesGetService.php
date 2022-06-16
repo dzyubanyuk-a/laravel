@@ -7,40 +7,32 @@ use Auth;
 
 class PastesGetService
 {
-        public function getlist()
+        public function getlist(): \Illuminate\Contracts\Pagination\Paginator
         {
-            return  Paste::join('activities', 'pastes.activity_id', '=', 'activities.id')
+            return  Paste::query()
                 ->where('user_id', '=', Auth::id())
-                ->whereRaw('(NOW() <= DATE_ADD(pastes.created_at, INTERVAL activities.activity SECOND)) OR (activities.activity =0)')
+                ->whereRaw('NOW()<=lifetime OR (lifetime = created_at)' )
                 ->orderBy('pastes.created_at', 'desc')
                 ->simplePaginate(10);
         }
 
-        public function getPastesPublic()
+        public function getPastesPublic(): \Illuminate\Database\Eloquent\Collection|array
         {
-            /*$Paste = Paste::query()->find(3);
-            $activity = $Paste->activity;
-            dd($activity->activity);*/
-
-
-
-
-            return Paste::join('activities', 'pastes.activity_id', '=', 'activities.id')
+            return Paste::query()
                 ->where('pastes.access_id', '=', '1')
-                ->whereRaw('(NOW() <= DATE_ADD(pastes.created_at, INTERVAL activities.activity SECOND)) OR (activities.activity = 0)')
+                ->whereRaw('NOW()<=lifetime OR (lifetime = created_at)' )
                 ->limit(10)
                 ->orderBy('pastes.id', 'desc')
                 ->get();
         }
 
-        public function getPastesUser()
+        public function getPastesUser(): \Illuminate\Database\Eloquent\Collection|array
         {
-            return Paste::join('activities', 'pastes.activity_id', '=', 'activities.id')
+            return Paste::query()
                 ->where('user_id', '=', Auth::id())
-                ->whereRaw('(NOW() <= DATE_ADD(pastes.created_at, INTERVAL activities.activity SECOND)) OR (activities.activity =0)')
+                ->whereRaw('NOW()<=lifetime OR (lifetime = created_at)' )
                 ->limit(10)
                 ->orderBy('pastes.id', 'desc')
-                ->orderBy('pastes.created_at', 'desc')
                 ->get();
         }
 }

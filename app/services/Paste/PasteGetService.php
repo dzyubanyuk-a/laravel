@@ -14,6 +14,7 @@ class PasteGetService
         return Paste::query()
             ->with('language')
             ->where('pastes.token', $token)
+            ->limit(1)
             ->get();
     }
 }

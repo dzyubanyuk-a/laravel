@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         $this->call(LanguageTableSeeder::class);
+        $this->call(PastesTableSeeder::class);
         $this->call(AccessTableSeeder::class);
         $this->call(ActivitiesTableSeeder::class);
     }
