@@ -21,11 +21,11 @@ class PasteCreateService
     {
         $paste_validate = PasteDTO::fromRequest($request);
 
+
        $paste = new Paste();
-        $paste->title = $paste_validate->paste;
+        $paste->title = $paste_validate->title;
         $paste->paste = $paste_validate->paste;
         $paste->language_id = $paste_validate->language;
-        //$paste->activity_id = $paste_validate->activity;
         $paste->access_id = $paste_validate->access;
         $paste->token = Str::random(40);
         $paste->user_id = Auth::check() ? Auth::id() : 0;

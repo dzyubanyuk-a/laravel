@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 use App\Models\Language;
 
+
 class Paste extends Model
 {
     use HasFactory;

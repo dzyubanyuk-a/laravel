@@ -11,6 +11,7 @@ class PasteGetService
 
     public function show($token):Collection
     {
+        $n = new Paste();
         return Paste::query()
             ->with('language')
             ->where('pastes.token', $token)
