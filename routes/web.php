@@ -4,6 +4,7 @@ use App\Http\Controllers\Paste\PasteCreateController;
 use App\Http\Controllers\Paste\PasteGetController;
 use App\Http\Controllers\Paste\PasteOptionsController;
 use App\Http\Controllers\Paste\PastesGetController;
+use App\Http\Controllers\User\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -23,7 +24,7 @@ Route::get('/', [PasteOptionsController::class, 'index'])
 
 Auth::routes();
 
-Route::get('/profile', [\App\Http\Controllers\User\ProfileController::class, 'index'])
+Route::get('/profile', [ProfileController::class, 'index'])
     ->name('profile')
     ->middleware('auth');
 
