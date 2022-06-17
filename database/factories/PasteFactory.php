@@ -2,7 +2,11 @@
 
 namespace Database\Factories;
 
+use App\Domain\Enums\Accesses\Accesses;
+use App\Domain\Enums\Activities\Activities;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 
 /**
@@ -18,6 +22,8 @@ class PasteFactory extends Factory
      */
     public function definition(): array
     {
+        $x = Arr::random(Activities::cases());
+
         return [
             'title' => 'Заголовок пасты №'.random_int(1,15),
              'paste' => 'Код пасты',
@@ -25,10 +31,10 @@ class PasteFactory extends Factory
              'access_id' =>  random_int(1,3),
              'token' => Str::random(40),
              'user_id' => random_int(0,1),
-             'created_at' => '2022-06-16 14:23:11',
-             'updated_at' => '2022-06-16 14:23:11',
+             'created_at' => Carbon::now(),
+             'updated_at' => Carbon::now(),
              'deleted_at' => NULL,
-             'lifetime' => '2022-06-16 19:00:14',
+             'lifetime' => Carbon::now()->addSecond($x->value),
 
         ];
     }

@@ -34,5 +34,14 @@ Route::get('/list', [PastesGetController::class, 'getlist'])
     ->name('list')
     ->middleware('auth');
 
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
+
+
 Route::get('/{token}', [PasteGetController::class, 'show'])
     ->name('token');;
+
+
+

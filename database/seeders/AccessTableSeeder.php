@@ -20,6 +20,7 @@ class AccessTableSeeder extends Seeder
     {
         $accesses = Accesses::cases();
 
+
         foreach ($accesses as $access) {
             Access::query()->updateOrCreate([
                 'access'=>$access,
