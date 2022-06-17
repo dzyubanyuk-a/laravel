@@ -2,13 +2,10 @@
 
 namespace App\Domain\DTO;
 
-
 use Illuminate\Http\Request;
-use Spatie\DataTransferObject\DataTransferObject;
 
 class PasteDTO
 {
-
     public string $title;
     public string $paste;
     public int $language;
@@ -36,6 +33,5 @@ class PasteDTO
         );
 
     }
-
 
 }

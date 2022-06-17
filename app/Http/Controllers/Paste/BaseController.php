@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers\Paste;
 
+use App\Http\Controllers\Controller;
 use App\services\Paste\PasteCreateService;
-
 use App\services\Paste\PasteGetService;
 use App\services\Paste\PasteOptionsService;
 use App\services\Paste\PastesGetService;
 
-class BaseController extends \App\Http\Controllers\Controller
+class BaseController extends Controller
 {
-
-
 
     protected PasteOptionsService $PasteOptionsService;
     protected PasteGetService $PasteGetService;

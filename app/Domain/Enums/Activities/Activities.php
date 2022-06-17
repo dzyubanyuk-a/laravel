@@ -12,5 +12,4 @@ enum Activities:int
     case Week_1 = 604800;
     case Month_1 = 18144000;
     case No_restrictions = 0;
-
 }
