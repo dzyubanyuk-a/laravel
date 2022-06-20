@@ -25,9 +25,9 @@ class CreateCodeRequest extends FormRequest
     {
 
         return [
-            'title' => 'required',
+            'title' => 'required|max:255',
             'paste' => 'required',
-            'language' => 'required',
+            'language' => 'required:',
             'activity' => 'required',
             'access' => 'required',
         ];
