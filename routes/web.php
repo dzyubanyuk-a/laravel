@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [PasteOptionsController::class, 'index'])
+/*Route::get('/', [PasteOptionsController::class, 'index'])
     ->name('index');
 
 Auth::routes();
@@ -29,16 +29,16 @@ Route::get('/profile', [ProfileController::class, 'index'])
     ->middleware('auth');
 
 Route::post('/create', [PasteCreateController::class, 'create'])
-    ->name('create');
+    ->name('create');*/
 
 Route::get('/list', [PastesGetController::class, 'getlist'])
     ->name('list')
     ->middleware('auth');
 
 
-Route::group(['prefix' => 'admin'], function () {
+/*Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
-});
+});*/
 
 
 Route::get('/{token}', [PasteGetController::class, 'show'])

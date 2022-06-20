@@ -27,8 +27,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Access whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Access whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Access whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
-	class Access extends \Eloquent {}
+	class IdeHelperAccess {}
 }
 
 namespace App\Models{
@@ -48,8 +49,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Activity whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Activity whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Activity whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
-	class Activity extends \Eloquent {}
+	class IdeHelperActivity {}
 }
 
 namespace App\Models{
@@ -59,8 +61,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Code newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Code newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Code query()
+ * @mixin \Eloquent
  */
-	class Code extends \Eloquent {}
+	class IdeHelperCode {}
 }
 
 namespace App\Models{
@@ -80,8 +83,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Language whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Language whereLanguage($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Language whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
-	class Language extends \Eloquent {}
+	class IdeHelperLanguage {}
 }
 
 namespace App\Models{
@@ -120,8 +124,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Paste whereUserId($value)
  * @method static \Illuminate\Database\Query\Builder|Paste withTrashed()
  * @method static \Illuminate\Database\Query\Builder|Paste withoutTrashed()
+ * @mixin \Eloquent
  */
-	class Paste extends \Eloquent {}
+	class IdeHelperPaste {}
 }
 
 namespace App\Models{
@@ -129,21 +134,29 @@ namespace App\Models{
  * App\Models\User
  *
  * @property int $id
+ * @property int|null $role_id
  * @property string $name
  * @property string $email
+ * @property string|null $avatar
  * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property string $password
  * @property string|null $remember_token
+ * @property string|null $settings
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property mixed $locale
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
+ * @property-read \TCG\Voyager\Models\Role|null $role
+ * @property-read \Illuminate\Database\Eloquent\Collection|\TCG\Voyager\Models\Role[] $roles
+ * @property-read int|null $roles_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Sanctum\PersonalAccessToken[] $tokens
  * @property-read int|null $tokens_count
  * @method static \Database\Factories\UserFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User query()
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereAvatar($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereEmail($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereEmailVerifiedAt($value)
@@ -151,8 +164,11 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereRoleId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereSettings($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
-	class User extends \Eloquent {}
+	class IdeHelperUser {}
 }
 

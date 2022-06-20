@@ -3,19 +3,16 @@
 namespace App\services\Paste;
 
 use App\Models\Paste;
+use App\Repositories\PastesRepository;
 use Illuminate\Database\Eloquent\Collection;
 
 
 class PasteGetService
 {
 
-    public function show($token):Collection
+    public function show($token): \Illuminate\Database\Eloquent\Builder
     {
-        $n = new Paste();
-        return Paste::query()
-            ->with('language')
-            ->where('pastes.token', $token)
-            ->limit(1)
-            ->get();
+        return PastesRepository::query()
+            ->selectPaste($token);
     }
 }

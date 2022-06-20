@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 
+/**
+ * @mixin IdeHelperActivity
+ */
 class Activity extends Model
 {
     use HasFactory;

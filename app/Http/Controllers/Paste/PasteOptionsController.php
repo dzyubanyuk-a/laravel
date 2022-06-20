@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Paste;
 use App\Http\Controllers\Controller;
 
 
-class PasteOptionsController extends BaseController
+class PasteOptionsController extends Controller
 {
     public function index()
     {
