@@ -21,7 +21,7 @@ class PastesGetController extends Controller
     /**
      * @throws RepositoryException
      */
-    public function getList(): Factory|View|Application
+    public function list(): Factory|View|Application
     {
             $data = $this->PastesGetService->getpastes();
 

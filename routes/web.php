@@ -32,7 +32,7 @@ Route::get('/profile', [ProfileController::class, 'index'])
 Route::post('/create', [PasteCreateController::class, 'create'])
     ->name('create');
 
-Route::get('/list', [PastesGetController::class, 'getlist'])
+Route::get('/list', [PastesGetController::class, 'list'])
     ->name('list')
     ->middleware('auth');
 

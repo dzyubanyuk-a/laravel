@@ -72,6 +72,7 @@ class PastesGetService
 
         $arrSecond =  Activities::cases();
 
+
         foreach ($arrSecond as $second){
 
             if($second->value != '0') {

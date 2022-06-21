@@ -2,7 +2,12 @@
 
 namespace App\Http\Requests;
 
+use App\Domain\Enums\Accesses\Accesses;
+use App\Domain\Enums\Activities\Activities;
+use App\Domain\Enums\Languages\Languages;
+use App\Models\Activity;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\Enum;
 
 class CreateCodeRequest extends FormRequest
 {
@@ -27,9 +32,9 @@ class CreateCodeRequest extends FormRequest
         return [
             'title' => 'required|max:255',
             'paste' => 'required',
-            'language' => 'required|numeric',
-            'activity' => 'required|numeric',
-            'access' => 'required|numeric',
+            'language' => 'required',
+            'activity' => [new Enum(Activities::class)],
+            'access' => [new Enum(Accesses::class)],
         ];
 
     }
