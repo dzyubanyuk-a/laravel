@@ -17,7 +17,7 @@ use Str;
 class PasteCreateService
 {
 
-    public function createPaste(CreateCodeRequest $request)
+   /* public function createPaste(CreateCodeRequest $request)
     {
         $paste_validate = PasteDTO::fromRequest($request);
 
@@ -33,5 +33,5 @@ class PasteCreateService
 
         $paste->save();
 
-    }
+    }*/
 }

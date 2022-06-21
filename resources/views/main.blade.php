@@ -44,7 +44,7 @@
                 </div>
             @endif
 
-            <form action="/create" method="POST">
+            <form action="{{ route('create') }}" method="POST">
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
@@ -56,57 +56,70 @@
                 @endif
 
                 @csrf
+
                 <h3>Создание</h3>
                 <p><label>Название:</label></p>
-                <p><input type="text" name="title"></p>
+                <p><label>
+                        <input type="text" name="title">
+                    </label></p>
                 <p><label>Код:</label></p>
-                <p><textarea name = "paste" rows="10" cols="45"></textarea></p>
+                <p><label>
+                        <textarea name = "paste" rows="10" cols="45"></textarea>
+                    </label></p>
 
                 <p><label>Выбирите язык:</label></p>
 
                  <p>
-                    <select name="language">
-                        <option value=""></option>
-                        @foreach ($languages as $language)
-                            <option value="{{$language->id}}">{{$language->language}}</option>
-                        @endforeach
-                    </select>
-                </p>
+                     <label>
+                         <select name="language">
+                             <option value=""></option>
+
+
+                             @foreach ($pastes[2][0] as $language)
+                                 <option value="{{$language->id}}">{{$language->language}}</option>
+                             @endforeach
+                         </select>
+                     </label>
+                 </p>
 
 
                 <p><label>Выбирите время активности:</label></p>
                 <p>
 
 
-                    <select name="activity">
-                        <option value=""></option>
+                    <label>
+                        <select name="activity">
+                            <option value=""></option>
 
-                        @foreach ($activities as $key => $activity)
+                            @foreach ($pastes[2][1] as $key => $activity)
 
-                            <option value="{{$key}}">{{$activity}}</option>
-                        @endforeach
-                    </select>
+                                <option value="{{$key}}">{{$activity}}</option>
+                            @endforeach
+                        </select>
+                    </label>
                 </p>
 
                 <p><label>Выбирите вид доступа:</label></p>
                 <p>
-                    <select name="access">
-                        <option value=""></option>
-                        @foreach ($accesses as $access)
+                    <label>
+                        <select name="access">
+                            <option value=""></option>
+                            @foreach ($pastes[2][2] as $access)
 
-                            @switch($access->access)
-                                @case(1)
-                                <option value="{{$access->access}}">Публичный</option>
-                                @break
-                                @case(2)
-                                <option value="{{$access->access}}">По ссылке</option>
-                                @break
-                                @case(3)
-                                <option value="{{$access->access}}">Приватный</option>
-                                @break
-                            @endswitch
-                        @endforeach
-                    </select>
+                                @switch($access->access)
+                                    @case(1)
+                                    <option value="{{$access->access}}">Публичный</option>
+                                    @break
+                                    @case(2)
+                                    <option value="{{$access->access}}">По ссылке</option>
+                                    @break
+                                    @case(3)
+                                    <option value="{{$access->access}}">Приватный</option>
+                                    @break
+                                @endswitch
+                            @endforeach
+                        </select>
+                    </label>
                 </p>
                 <p><input type="submit" value="Сохранить"></p>
             </form>
@@ -115,7 +128,7 @@
         <div class = "public_codes">
             <h3>Список последних 10 публичных записей</h3>
 
-            @foreach ($pastes as $paste)
+            @foreach ($pastes[0] as $paste)
 
                 <p>
                     <label>Название кода: </label>
@@ -125,10 +138,13 @@
                 </p
             @endforeach
         </div>
+
+
+
         @auth
         <div class = "codes_user">
             <h3>Список последних 10 записей пользователя</h3>
-            @foreach ($user_pastes as $user_paste)
+            @foreach ($pastes[1] as $user_paste)
 
                 <p>
                     <label>Название кода: </label>

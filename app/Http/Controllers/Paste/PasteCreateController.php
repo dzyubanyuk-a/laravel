@@ -4,16 +4,23 @@ namespace App\Http\Controllers\Paste;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateCodeRequest;
-use App\Models\Paste;
+use App\services\Paste\PastesGetService;
+use Illuminate\Http\RedirectResponse;
 
 
 class PasteCreateController extends Controller
 {
-    public function create(CreateCodeRequest $request)
+    private PastesGetService $PastesGetService;
+
+    public function __construct(PastesGetService $PastesGetService)
     {
-        $this->PasteCreateService->createPaste($request);
+        $this->PastesGetService = $PastesGetService;
+    }
 
-        return redirect('/');
+    public function create(CreateCodeRequest $request): RedirectResponse
+    {
+        $this->PastesGetService->createPaste($request);
 
+        return redirect()->route('index');
     }
 }

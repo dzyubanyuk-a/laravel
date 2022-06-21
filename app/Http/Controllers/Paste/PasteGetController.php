@@ -3,29 +3,24 @@
 namespace App\Http\Controllers\Paste;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\PastesRepository;
-use App\services\Paste\PasteGetService;
 use App\services\Paste\PastesGetService;
-use Prettus\Repository\Exceptions\RepositoryException;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 
 class PasteGetController extends Controller
 {
-    protected PastesRepository $pastes;
+    private PastesGetService $PastesGetService;
 
-    public function __construct(PastesRepository $pastes)
+    public function __construct(PastesGetService $PastesGetService)
     {
-        $this->pastes = $pastes;
+        $this->PastesGetService = $PastesGetService;
     }
 
-    /**
-     * @throws RepositoryException
-     */
-    public function show($token): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
+    public function show($token): Factory|View|Application
     {
-        {
-            $data = $this->show($token);
+            $data = $this->PastesGetService->getPaste($token);
 
-            return view('paste', $data);
-        }
+            return view('paste', ['paste' => $data]);
     }
 }

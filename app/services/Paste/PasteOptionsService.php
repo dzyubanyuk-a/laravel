@@ -2,10 +2,8 @@
 
 namespace App\services\Paste;
 
-use App\Domain\Enums\Accesses\Accesses;
 use App\Domain\Enums\Activities\Activities;
 use App\Models\Access;
-use App\Models\Activity;
 use App\Models\Language;
 use Carbon\CarbonInterval;
 use Illuminate\Database\Eloquent\Collection;

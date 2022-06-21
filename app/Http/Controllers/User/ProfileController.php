@@ -3,37 +3,34 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Paste\BaseController;
+use App\services\Paste\PastesGetService;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Prettus\Repository\Exceptions\RepositoryException;
 
-
-class ProfileController extends BaseController
+class ProfileController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-   /* public function __construct()
+
+
+    private PastesGetService $PastesGetService;
+
+    public function __construct( PastesGetService $pastesGetService)
     {
-        $this->middleware('auth');
+        $this->PastesGetService = $pastesGetService;
     }
-   */
 
 
     /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @throws RepositoryException
      */
-    public function index()
+    public function index(): Factory|View|Application
     {
-        $pastesPublic = $this->PastesGetService->getPastesPublic();
-        $pastesUser = $this->PastesGetService->getPastesUser();
+        {
+            $data[] = $this->PastesGetService->getPastesPublic();
+            $data[] = $this->PastesGetService->getPastesUser();
 
-
-        return view('profile',[
-            'pastes' => $pastesPublic,
-            'user_pastes' => $pastesUser]);
-
+            return view('profile', ['pastes' => $data]);
+        }
     }
 }

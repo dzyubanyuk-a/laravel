@@ -1,21 +1,22 @@
 body{
-    background: #F5FFFA;
-}
-.create{
-    width: 400px;
-    padding: 20px;
-    background: #e2e8f0;
-    float:left;
+    background: #e0e0e0;
 }
 
-.public_codes{
+.create{
+    border: 1px solid #c6c8ca;
     padding: 20px;
-    background: #e2e8f0;
+    width: 400px;
+    float: left;
+    clear: both;
+}
+.public_codes{
+    border: 1px solid #c6c8ca;
+    padding-left: 20px;
+    width: 400px;
+    float: left;
 
 }
 
 .codes_user{
-    padding: 20px;
-    background: #e2e8f0;
-
+    clear: both;
 }

@@ -2,48 +2,90 @@
 
 namespace App\services\Paste;
 
-use App\Models\Paste;
+use App\Domain\Enums\Activities\Activities;
+use App\Http\Requests\CreateCodeRequest;
+use App\Repositories\AccessRepository;
+use App\Repositories\ActivitiesRepository;
+use App\Repositories\LanguagesRepository;
 use App\Repositories\PastesRepository;
-use Auth;
+use Carbon\CarbonInterval;
+use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Database\Eloquent\Collection;
 use Prettus\Repository\Exceptions\RepositoryException;
 
 class PastesGetService
 {
 
     protected PastesRepository $pastes;
+    protected LanguagesRepository $languages;
+    protected ActivitiesRepository $activities;
+    protected AccessRepository $accesses;
 
-    public function __construct(PastesRepository $pastes)
+    public function __construct(PastesRepository $pastes, LanguagesRepository $languages, ActivitiesRepository $activities,
+    AccessRepository $accesses)
     {
-
         $this->pastes = $pastes;
+        $this->languages = $languages;
+        $this->activities = $activities;
+        $this->accesses = $accesses;
     }
 
     /**
      * @throws RepositoryException
      */
-    public function getpastes()
+    public function getPastes(): Paginator
     {
         return $this->pastes->selectPastes();
 
     }
 
-      /*  public function getPastesPublic(): \Illuminate\Database\Eloquent\Collection|array
-        {
-            return Paste::query()
-                ->where('pastes.access_id', '=', '1')
-                ->whereRaw('NOW()<=lifetime OR (lifetime = created_at)' )
-                ->limit(10)
-                ->orderBy('pastes.id', 'desc')
-                ->get();
+    /**
+     * @throws RepositoryException
+     */
+    public function getPastesPublic(): Collection|array
+    {
+        return $this->pastes->getPastesPublic();
+
+    }
+
+    /**
+     * @throws RepositoryException
+     */
+    public function getPastesUser(): Collection|array
+    {
+        return $this->pastes->getPastesUser();
+
+    }
+
+    public function getPaste($token): Collection|array
+    {
+        return $this->pastes->getPaste($token);
+
+    }
+
+
+    public function getOptionsPaste()
+    {
+        $lang = $this->languages->getLanguages();
+
+        $access = $this->accesses->getAccess();
+
+        $arrSecond =  Activities::cases();
+
+        foreach ($arrSecond as $second){
+
+            if($second->value != '0') {
+                $act[$second->value] = CarbonInterval::second($second->value)->cascade()->forHumans();
+            }else{
+                $act[$second->value] = 'Без органичений';
+            }
         }
 
-        public function getPastesUser(): \Illuminate\Database\Eloquent\Collection|array
-        {
-            return Paste::query()
-                ->where('user_id', '=', Auth::id())
-                ->whereRaw('NOW()<=lifetime OR (lifetime = created_at)' )
-                ->limit(10)
-                ->orderBy('pastes.id', 'desc')
-                ->get();
-        }*/
+        return ([$lang, $act, $access]);
+    }
+
+    public function createPaste(CreateCodeRequest $request){
+
+       $this->pastes->createPaste($request);
+    }
 }

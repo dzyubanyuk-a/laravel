@@ -27,29 +27,14 @@ class CreateCodeRequest extends FormRequest
         return [
             'title' => 'required|max:255',
             'paste' => 'required',
-            'language' => 'required:',
-            'activity' => 'required',
-            'access' => 'required',
+            'language' => 'required|numeric',
+            'activity' => 'required|numeric',
+            'access' => 'required|numeric',
         ];
 
     }
 
-    /**
-     * Получить сообщения об ошибках для определенных правил валидации.
-     *
-     * @return array
-     */
-    public function messages()
-    {
-        return [
-            'title.required' => 'Поле title не заполнено!',
-            'paste.required' => 'Поле paste не заполнено!',
-            'language.required' => 'Поле language не выбрано!',
-            'activity.required' => 'Поле activity не выбрано!',
-            'access.required' => 'Поле access не выбрано!'
 
-        ];
-    }
 
 
 }
