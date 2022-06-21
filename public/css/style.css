@@ -1,11 +1,26 @@
-body{
-    background: #e0e0e0;
+*{
+    margin: 0;
 }
+body{
+    background: #ffffff;
+}
+
+.menu{
+    background: #333539;
+    height: 50px;
+}
+.menu a{
+    color: #e0e0e0;
+}
+.link_paste{
+    color: #e0e0e0;
+}
+
 
 .create{
     border: 1px solid #c6c8ca;
     padding: 20px;
-    width: 400px;
+    width: 60%;
     float: left;
     clear: both;
 }

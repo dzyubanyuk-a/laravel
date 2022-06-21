@@ -22,13 +22,14 @@
         </style>
     </head>
     <body class="antialiased">
-
+<div class = "menu">
+    <div class = "link_paste">
     @if(session('token'))
         <p><b>{{session('token')}}</b></p>
     @else
         <p><b>{{'Здесь будет ссылка на пасту'}}</b></p>
     @endif
-
+    </div>
 
     @auth
     <p><label>Список всех кодов пользователя: </label><a href="{{ route('list') }}">Открыть</a>
@@ -41,8 +42,8 @@
 
 
 
+<div class = "auth">
 
-        <div class="create">
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
@@ -56,7 +57,9 @@
                     @endauth
                 </div>
             @endif
-
+        </div>
+</div>
+<div class="create">
             <form action="{{ route('create') }}" method="POST">
                 @if ($errors->any())
                     <div class="alert alert-danger">
