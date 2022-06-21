@@ -7,12 +7,14 @@ use App\Http\Requests\CreateCodeRequest;
 use App\Models\Paste;
 use App\Repositories\Interfaces\PastesInterface;
 use Carbon\Carbon;
+use http\Url;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Exceptions\RepositoryException;
 use Str;
+
 
 class PastesRepository extends BaseRepository implements PastesInterface
 {
@@ -69,16 +71,13 @@ class PastesRepository extends BaseRepository implements PastesInterface
             ->get();
     }
 
-    /**
-     * @throws RepositoryException
-     */
     public function getPaste($token): Collection|array
     {
         $model = $this->makeModel();
 
         return $model
             ->query()
-            ->select( 'paste')
+            ->with('language')
             ->where('token', '=', $token)
             ->get();
 
@@ -102,6 +101,9 @@ class PastesRepository extends BaseRepository implements PastesInterface
         $paste->lifetime = Carbon::now()->addsecond($paste_validate->activity);
 
         $paste->save();
+
+        return url($paste->token);
+
 
 
     }

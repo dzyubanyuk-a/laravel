@@ -22,9 +22,10 @@ class PasteController extends Controller
 
     public function create(CreateCodeRequest $request): RedirectResponse
     {
-        $this->PastesGetService->createPaste($request);
+        $token = $this->PastesGetService->createPaste($request);
 
-        return redirect()->route('index');
+        return redirect('/')->with('token', $token);
+
     }
 
     public function show($token): Factory|View|Application

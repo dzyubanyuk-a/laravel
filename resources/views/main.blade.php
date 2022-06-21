@@ -22,12 +22,25 @@
         </style>
     </head>
     <body class="antialiased">
+
+    @if(session('token'))
+        <p><b>{{session('token')}}</b></p>
+    @else
+        <p><b>{{'Здесь будет ссылка на пасту'}}</b></p>
+    @endif
+
+
     @auth
     <p><label>Список всех кодов пользователя: </label><a href="{{ route('list') }}">Открыть</a>
         @endauth
-
-
     </p>
+
+
+
+
+
+
+
 
         <div class="create">
             @if (Route::has('login'))

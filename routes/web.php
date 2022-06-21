@@ -28,7 +28,6 @@ Route::get('/profile', [ProfileController::class, 'index'])
     ->name('profile')
     ->middleware('auth');
 
-
 Route::post('/create', [PasteController::class, 'create'])
     ->name('create');
 
@@ -36,12 +35,5 @@ Route::get('/list', [PasteController::class, 'list'])
     ->name('list')
     ->middleware('auth');
 
-
-
-
-
 Route::get('/{token}', [PasteController::class, 'show'])
     ->name('token');;
-
-
-

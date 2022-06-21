@@ -8,6 +8,7 @@ use App\Domain\Enums\Languages\Languages;
 use App\Http\Requests\CreateCodeRequest;
 use App\Repositories\PastesRepository;
 use Carbon\CarbonInterval;
+use Exception;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Collection;
 use Prettus\Repository\Exceptions\RepositoryException;
@@ -46,7 +47,6 @@ class PastesGetService
     }
 
     /**
-     * @throws RepositoryException
      */
     public function getPaste($token): Collection|array
     {
@@ -55,7 +55,7 @@ class PastesGetService
 
 
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     public function getOptionsPaste(): array
     {
@@ -76,9 +76,9 @@ class PastesGetService
         return (['lang'=>$lang, 'access'=>$access, 'act'=>$activity]);
     }
 
-    public function createPaste(CreateCodeRequest $request): void
+    public function createPaste(CreateCodeRequest $request): string|null
     {
 
-       $this->pastes->createPaste($request);
+        return $this->pastes->createPaste($request);
     }
 }
