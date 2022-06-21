@@ -69,7 +69,10 @@ class PastesRepository extends BaseRepository implements PastesInterface
             ->get();
     }
 
-    public function getPaste($token)
+    /**
+     * @throws RepositoryException
+     */
+    public function getPaste($token): Collection|array
     {
         $model = $this->makeModel();
 

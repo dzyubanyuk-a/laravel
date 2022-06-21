@@ -18,5 +18,6 @@ body{
 }
 
 .codes_user{
+    float: left;
     clear: both;
 }

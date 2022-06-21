@@ -1,0 +1,34 @@
+body{
+    background: #e0e0e0;
+}
+
+.create{
+    border: 1px solid #c6c8ca;
+    padding: 20px;
+    width: 400px;
+    float: left;
+    clear: both;
+}
+.public_codes{
+    border: 1px solid #c6c8ca;
+    padding-left: 20px;
+    width: 400px;
+    display: table-cell;
+
+}
+.list{
+    clear: both;
+}
+
+.navbar{
+    float: right;
+}
+.codes_user{
+    display: table-cell;
+    clear: both;
+}
+
+.full{
+    display: table;
+}
+

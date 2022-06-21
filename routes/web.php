@@ -1,9 +1,6 @@
 <?php
 
-use App\Http\Controllers\Paste\PasteCreateController;
-use App\Http\Controllers\Paste\PasteGetController;
-
-use App\Http\Controllers\Paste\PastesGetController;
+use App\Http\Controllers\Paste\PasteController;
 use App\Http\Controllers\User\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -18,8 +15,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
 
-Route::get('/', [PastesGetController::class, 'index'])
+Route::get('/', [PasteController::class, 'index'])
     ->name('index');
 
 Auth::routes();
@@ -29,20 +29,18 @@ Route::get('/profile', [ProfileController::class, 'index'])
     ->middleware('auth');
 
 
-Route::post('/create', [PasteCreateController::class, 'create'])
+Route::post('/create', [PasteController::class, 'create'])
     ->name('create');
 
-Route::get('/list', [PastesGetController::class, 'list'])
+Route::get('/list', [PasteController::class, 'list'])
     ->name('list')
     ->middleware('auth');
 
 
-/*Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
-});*/
 
 
-Route::get('/{token}', [PasteGetController::class, 'show'])
+
+Route::get('/{token}', [PasteController::class, 'show'])
     ->name('token');;
 
 
