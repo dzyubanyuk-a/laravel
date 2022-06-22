@@ -4,6 +4,7 @@ namespace App\Repositories\Interfaces;
 
 use App\Http\Requests\CreateCodeRequest;
 
+
 interface PastesInterface
 {
     public function getPaste($token);

@@ -7,9 +7,9 @@ use App\Http\Requests\CreateCodeRequest;
 use App\Models\Paste;
 use App\Repositories\Interfaces\PastesInterface;
 use Carbon\Carbon;
-use http\Url;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Exceptions\RepositoryException;
@@ -42,7 +42,7 @@ class PastesRepository extends BaseRepository implements PastesInterface
     /**
      * @throws RepositoryException
      */
-    public function getPastesPublic(): Collection|array
+    public function getPastesPublic(): Collection
     {
         $model = $this->makeModel();
 
@@ -58,7 +58,7 @@ class PastesRepository extends BaseRepository implements PastesInterface
     /**
      * @throws RepositoryException
      */
-    public function getPastesUser(): Collection|array
+    public function getPastesUser(): Collection
     {
         $model = $this->makeModel();
 
@@ -71,7 +71,7 @@ class PastesRepository extends BaseRepository implements PastesInterface
             ->get();
     }
 
-    public function getPaste($token): Collection|array
+    public function getPaste($token): Collection
     {
         $model = $this->makeModel();
 
@@ -85,12 +85,14 @@ class PastesRepository extends BaseRepository implements PastesInterface
     }
 
 
-    public function createPaste(CreateCodeRequest $request)
+    /**
+     * @throws RepositoryException
+     */
+    public function createPaste(CreateCodeRequest $request): Model
     {
         $paste = $this->makeModel();
 
         $paste_validate = PasteDTO::fromRequest($request);
-
 
         $paste->title = $paste_validate->title;
         $paste->paste = $paste_validate->paste;
@@ -102,7 +104,7 @@ class PastesRepository extends BaseRepository implements PastesInterface
 
         $paste->save();
 
-        return url($paste->token);
+        return $paste;
 
 
 

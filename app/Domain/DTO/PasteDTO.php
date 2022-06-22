@@ -24,7 +24,7 @@ class PasteDTO
 
     public static function fromRequest( Request $request):PasteDTO
     {
-        return new static(
+        return new PasteDTO(
             $request->get('title'),
             $request->get('paste'),
             $request->get('language'),

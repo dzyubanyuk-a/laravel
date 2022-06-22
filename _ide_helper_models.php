@@ -14,7 +14,6 @@ namespace App\Models{
 /**
  * App\Models\Access
  *
- * @mixin IdeHelperAccess
  * @property int $id
  * @property int $access
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -28,6 +27,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Access whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Access whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Access whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 	class Access extends \Eloquent {}
 }
@@ -36,7 +36,6 @@ namespace App\Models{
 /**
  * App\Models\Activity
  *
- * @mixin IdeHelperActivity
  * @property int $id
  * @property int $activity
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -50,6 +49,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Activity whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Activity whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Activity whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 	class Activity extends \Eloquent {}
 }
@@ -58,10 +58,10 @@ namespace App\Models{
 /**
  * App\Models\Code
  *
- * @mixin IdeHelperCode
  * @method static \Illuminate\Database\Eloquent\Builder|Code newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Code newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Code query()
+ * @mixin \Eloquent
  */
 	class Code extends \Eloquent {}
 }
@@ -70,7 +70,6 @@ namespace App\Models{
 /**
  * App\Models\Language
  *
- * @mixin IdeHelperLanguage
  * @property int $id
  * @property string $language
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -84,6 +83,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Language whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Language whereLanguage($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Language whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 	class Language extends \Eloquent {}
 }
@@ -92,7 +92,6 @@ namespace App\Models{
 /**
  * App\Models\Paste
  *
- * @mixin IdeHelperPaste
  * @property int $id
  * @property string $title
  * @property string $paste
@@ -125,6 +124,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Paste whereUserId($value)
  * @method static \Illuminate\Database\Query\Builder|Paste withTrashed()
  * @method static \Illuminate\Database\Query\Builder|Paste withoutTrashed()
+ * @mixin \Eloquent
  */
 	class Paste extends \Eloquent {}
 }
@@ -133,7 +133,6 @@ namespace App\Models{
 /**
  * App\Models\User
  *
- * @mixin IdeHelperUser
  * @property int $id
  * @property int|null $role_id
  * @property string $name
@@ -168,6 +167,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRoleId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereSettings($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 	class User extends \Eloquent {}
 }

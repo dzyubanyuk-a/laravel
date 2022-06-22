@@ -4,5 +4,5 @@ namespace App\Repositories\Interfaces;
 
 interface UsersInterface
 {
-    public function getProfile();
+    /*public function getProfile();*/
 }

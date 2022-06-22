@@ -53,14 +53,26 @@
 
                     @if(Auth::check())
                         @if($paste_filter->user_id == Auth::user()->id)
-
-
+                        <p><label>Язык: </label>
+                        {{$paste_filter->language->language}}</p>
                             <pre><code class = "">{{$paste_filter->paste}}</code></pre>
                         @endif
 
                     @endif
                 @else
-                        <pre><code class = "{{$paste_filter->language->language}}">{{$paste_filter->paste}}</code></pre>
+                <p>
+                    <label>Язык программирования: </label>
+                    {{$paste_filter->language->language}}
+                </p>
+
+                <p>
+                    <label>Паста: </label>
+                    <pre>
+                        <code class = "{{$paste_filter->language->language}}">{{$paste_filter->paste}}</code>
+                    </pre>
+                </p>
+
+
                 @endif
             @endforeach
 

@@ -14,8 +14,8 @@ class UsersGetService
     }
 
 
-    public function getProfile()
+   /* public function getProfile()
     {
         return $this->users->getProfile();
-    }
+    }*/
 }

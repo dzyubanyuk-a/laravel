@@ -11,6 +11,7 @@ use Carbon\CarbonInterval;
 use Exception;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Exceptions\RepositoryException;
 
 class PastesGetService
@@ -33,7 +34,7 @@ class PastesGetService
     /**
      * @throws RepositoryException
      */
-    public function getPastesPublic(): Collection|array
+    public function getPastesPublic(): Collection
     {
         return $this->pastes->getPastesPublic();
     }
@@ -41,14 +42,14 @@ class PastesGetService
     /**
      * @throws RepositoryException
      */
-    public function getPastesUser(): Collection|array
+    public function getPastesUser(): Collection
     {
         return $this->pastes->getPastesUser();
     }
 
     /**
      */
-    public function getPaste($token): Collection|array
+    public function getPaste($token): Collection
     {
         return $this->pastes->getPaste($token);
     }
@@ -63,7 +64,7 @@ class PastesGetService
         $access = Accesses::cases();
         $Activities =  Activities::cases();
 
-
+        $activity = [];
         foreach ($Activities as $second){
 
             if($second->value != '0') {
@@ -73,10 +74,14 @@ class PastesGetService
             }
         }
 
+
         return (['lang'=>$lang, 'access'=>$access, 'act'=>$activity]);
     }
 
-    public function createPaste(CreateCodeRequest $request): string|null
+    /**
+     * @throws RepositoryException
+     */
+    public function createPaste(CreateCodeRequest $request): Model
     {
 
         return $this->pastes->createPaste($request);

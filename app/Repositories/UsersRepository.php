@@ -13,8 +13,8 @@ class UsersRepository extends BaseRepository implements UsersInterface
         return User::class;
     }
 
-    public function getProfile()
+    /*public function getProfile()
     {
         return null;
-    }
+    }*/
 }

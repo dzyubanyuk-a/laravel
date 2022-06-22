@@ -9,6 +9,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Redirector;
 use Prettus\Repository\Exceptions\RepositoryException;
 
 class PasteController extends Controller
@@ -20,12 +21,11 @@ class PasteController extends Controller
         $this->PastesGetService = $PastesGetService;
     }
 
-    public function create(CreateCodeRequest $request): RedirectResponse
+    public function create(CreateCodeRequest $request): Redirector|Application|RedirectResponse
     {
-        $token = $this->PastesGetService->createPaste($request);
+        $paste = $this->PastesGetService->createPaste($request);
 
-        return redirect('/')->with('token', $token);
-
+        return redirect($paste->token);
     }
 
     public function show($token): Factory|View|Application

@@ -7,7 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 
 /**
- * @mixin IdeHelperCode
+ * App\Models\Code
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Code newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Code newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Code query()
+ * @mixin \Eloquent
  */
 class Code extends Model
 {
