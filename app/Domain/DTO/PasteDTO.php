@@ -2,7 +2,6 @@
 
 namespace App\Domain\DTO;
 
-use Illuminate\Http\Request;
 
 class PasteDTO
 {
@@ -12,26 +11,14 @@ class PasteDTO
     public int $activity;
     public int $access;
 
-    public function __construct(string $title, string $paste, int $language, int $activity, int $access)
+
+    public function __construct(array $values)
     {
-        $this->title = $title;
-        $this->paste = $paste;
-        $this->language = $language;
-        $this->activity = $activity;
-        $this->access = $access;
-    }
-
-
-    public static function fromRequest( Request $request):PasteDTO
-    {
-        return new PasteDTO(
-            $request->get('title'),
-            $request->get('paste'),
-            $request->get('language'),
-            $request->get('activity'),
-            $request->get('access'),
-        );
-
+        foreach ($values as $key => $value) {
+            if (property_exists($this, $key)) {
+                $this->$key = $value;
+            }
+        }
     }
 
 }
