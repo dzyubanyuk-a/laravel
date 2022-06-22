@@ -22,15 +22,8 @@
         </style>
     </head>
     <body class="antialiased">
+    <div class = 'container'>
 <div class = "menu">
-    <div class = "link_paste">
-    @if(session('token'))
-        <p><b>{{session('token')}}</b></p>
-    @else
-        <p><b>{{'Здесь будет ссылка на пасту'}}</b></p>
-    @endif
-    </div>
-
     @auth
     <p><label>Список всех кодов пользователя: </label><a href="{{ route('list') }}">Открыть</a>
         @endauth
@@ -142,16 +135,15 @@
         </div>
 
         <div class = "public_codes">
-            <h3>Список последних 10 публичных записей</h3>
+            <h3>Публичные пасты:</h3>
 
-            @foreach ($pastes['public'] as $paste)
+            @foreach ($pastes['public'] as $key => $paste)
 
                 <p>
-                    <label>Название кода: </label>
+                   <a href="{{ route('token', ['token'=> $paste->token])}}">{{$paste->title}}</a>
 
-
-                        <a href="{{ route('token', ['token'=> $paste->token])}}">{{$paste->title}}</a>
                 </p>
+
             @endforeach
         </div>
 
@@ -169,5 +161,6 @@
             @endforeach
         </div>
         @endauth
+    </div>
     </body>
 </html>

@@ -11,7 +11,6 @@ class PasteDTO
     public int $activity;
     public int $access;
 
-
     public function __construct(array $values)
     {
         foreach ($values as $key => $value) {
