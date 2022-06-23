@@ -46,6 +46,7 @@ use Laravel\Sanctum\HasApiTokens;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereSettings($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @mixin Eloquent
+ * @mixin IdeHelperUser
  */
 class User extends \TCG\Voyager\Models\User
 {

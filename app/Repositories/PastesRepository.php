@@ -50,7 +50,7 @@ class PastesRepository extends BaseRepository implements PastesInterface
         return $model
             ->query()
             ->where('pastes.access_id', '=', '1')
-            ->whereRaw('NOW()<=lifetime OR (lifetime = created_at)' )
+            ->whereRaw('((NOW()<=lifetime) OR (lifetime = created_at))' )
             ->limit(10)
             ->orderBy('pastes.id', 'desc')
             ->get();

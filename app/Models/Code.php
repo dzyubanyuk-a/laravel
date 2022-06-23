@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Code newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Code query()
  * @mixin \Eloquent
+ * @mixin IdeHelperCode
  */
 class Code extends Model
 {

@@ -45,6 +45,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|Paste withTrashed()
  * @method static \Illuminate\Database\Query\Builder|Paste withoutTrashed()
  * @mixin Eloquent
+ * @mixin IdeHelperPaste
  */
 class Paste extends Model
 {

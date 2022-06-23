@@ -17,18 +17,21 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->text('paste');
-            $table->unsignedBigInteger('language_id');
-            $table->unsignedBigInteger('access_id');
-            $table->unsignedBigInteger('activity_id');
+            /*$table->unsignedBigInteger('language_id');*/
+            $table->foreignId('language_id')->constrained();
+            $table->foreignId('access_id')->constrained();
+            $table->foreignId('activity_id')->constrained();
+           /* $table->unsignedBigInteger('access_id');
+            $table->unsignedBigInteger('activity_id');*/
             $table->string('token');
             $table->integer('user_id');
             $table->timestamps();
 
             $table->softDeletes();
 
-            $table->foreign('language_id')->references('id')->on('languages');
-            $table->foreign('access_id')->references('id')->on('accesses');
-            $table->foreign('activity_id')->references('id')->on('activities');
+            /*$table->foreign('language_id')->references('id')->on('languages');*/
+           /* $table->foreign('access_id')->references('id')->on('accesses');
+            $table->foreign('activity_id')->references('id')->on('activities');*/
         });
     }
 

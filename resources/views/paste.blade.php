@@ -44,10 +44,6 @@
 
 
 
-
-
-
-
             @foreach ($paste as $paste_filter)
                 @if($paste_filter->access_id == 3)
 

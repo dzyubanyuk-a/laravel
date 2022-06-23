@@ -25,6 +25,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder|Activity whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Activity whereUpdatedAt($value)
  * @mixin Eloquent
+ * @mixin IdeHelperActivity
  */
 class Activity extends Model
 {

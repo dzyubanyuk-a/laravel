@@ -24,6 +24,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Language whereLanguage($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Language whereUpdatedAt($value)
  * @mixin Eloquent
+ * @mixin IdeHelperLanguage
  */
 class Language extends Model
 {

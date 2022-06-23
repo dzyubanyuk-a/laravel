@@ -25,6 +25,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder|Access whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Access whereUpdatedAt($value)
  * @mixin Eloquent
+ * @mixin IdeHelperAccess
  */
 class Access extends Model
 {
