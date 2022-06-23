@@ -25,9 +25,11 @@
     <div class = 'container'>
 <div class = "menu">
     @auth
-    <p><label>Список всех кодов пользователя: </label><a href="{{ route('list') }}">Открыть</a>
+        <div class = "link_paste">
+    <p><label>Список всех кодов пользователя: </label><a href="{{ route('list') }}">Открыть</a> </p>
+    </div>
         @endauth
-    </p>
+
 
 
 
@@ -76,28 +78,29 @@
                         <textarea name = "paste" rows="10" cols="45"></textarea>
                     </label></p>
 
-                <p><label>Выбирите язык:</label></p>
+                    <p> <label>Выбирите язык:</label>  </p>
 
-                 <p>
+
+
                      <label>
-                         <select name="language">
+                         <select name="language" class = "language">
                              <option value=""></option>
-
 
                              @foreach ($pastes['option']['lang'] as $language)
                                  <option value="{{$language->value}}">{{$language->name}}</option>
                              @endforeach
                          </select>
                      </label>
-                 </p>
 
 
-                <p><label>Выбирите время активности:</label></p>
-                <p>
+
+                    <p> <label>Выбирите время активности:</label> </p>
+
+
 
 
                     <label>
-                        <select name="activity">
+                        <select name="activity" class = "activity">
                             <option value=""></option>
 
                             @foreach ($pastes['option']['act'] as $key => $activity)
@@ -106,12 +109,12 @@
                             @endforeach
                         </select>
                     </label>
-                </p>
 
-                <p><label>Выбирите вид доступа:</label></p>
-                <p>
+
+              <p>  <label>Выбирите вид доступа:</label></p>
+
                     <label>
-                        <select name="access">
+                        <select name="access" class = "access">
                             <option value=""></option>
                             @foreach ($pastes['option']['access'] as $access)
 
@@ -129,8 +132,8 @@
                             @endforeach
                         </select>
                     </label>
-                </p>
-                <p><input type="submit" value="Сохранить"></p>
+
+                <p><input type="submit" value="Сохранить" class = "save"></p>
             </form>
         </div>
 
@@ -147,16 +150,15 @@
             @endforeach
         </div>
 
-
+<hr>
 
         @auth
         <div class = "codes_user">
-            <h3>Список последних 10 записей пользователя</h3>
+            <h3>Личный пасты:</h3>
             @foreach ($pastes['user'] as $user_paste)
 
                 <p>
-                    <label>Название кода: </label>
-                        <a href="{{ route('token', ['token'=> $paste->token])}}">{{$user_paste->title}}</a>
+                                 <a href="{{ route('token', ['token'=> $paste->token])}}">{{$user_paste->title}}</a>
                 </p>
             @endforeach
         </div>

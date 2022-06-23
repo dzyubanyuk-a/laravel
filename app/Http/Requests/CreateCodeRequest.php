@@ -6,6 +6,7 @@ use App\Domain\Enums\Accesses\Accesses;
 use App\Domain\Enums\Activities\Activities;
 use App\Domain\Enums\Languages\Languages;
 use App\Models\Activity;
+use App\Models\Language;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Enum;
 
@@ -30,9 +31,9 @@ class CreateCodeRequest extends FormRequest
     {
 
         return [
-            'title' => 'required|max:255',
+            'title' => 'bail|required|max:255',
             'paste' => 'required',
-            'language' => 'required',
+            'language' => [new Enum(Languages::class)],
             'activity' => [new Enum(Activities::class)],
             'access' => [new Enum(Accesses::class)],
         ];

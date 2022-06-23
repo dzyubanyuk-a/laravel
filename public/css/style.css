@@ -8,9 +8,34 @@ body{
 textarea
 {
     width:100%;
-    height: 250px;
+    height: 550px;
     border:1px solid #dcdcdc;
     resize: none;
+}
+
+.language{
+    border:1px solid #dcdcdc;
+    width: 150px;
+    height: 25px;
+}
+
+.access{
+    border:1px solid #dcdcdc;
+    margin-bottom: 10px;
+    width: 150px;
+    height: 25px;
+}
+
+.activity{
+    border:1px solid #dcdcdc;
+    width: 150px;
+    height: 25px;
+}
+
+.save{
+    width: 200px !important;
+    height: 30px !important;
+    float: right;
 }
 
 .create input{
@@ -34,7 +59,8 @@ textarea
 
 }
 .link_paste{
-    color: #e0e0e0;
+    padding-top: 10px;
+    color: #e3e3e3;
 }
 
 
@@ -48,6 +74,7 @@ textarea
 .public_codes{
     padding: 20px;
     width: 40%;
+    clear: both;
     display: table-cell;
     word-break:break-all;
 }
@@ -55,9 +82,19 @@ textarea
 .public_codes a{
     font-size: 16px;
 }
+
+.codes_user a{
+    font-size: 16px;
+}
+
+.codes_user p{
+    padding-bottom: 5px;
+}
+
 .public_codes p{
     padding-bottom: 5px;
 }
+
 .list{
     clear: both;
 }
@@ -66,8 +103,11 @@ textarea
     float: right;
 }
 .codes_user{
-    display: table-cell;
-    clear: both;
+    padding: 20px;
+    width: 250px;
+    float: left;
+    word-break:break-all;
+
 }
 
 .full{

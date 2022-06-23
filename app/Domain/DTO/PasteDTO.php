@@ -7,7 +7,7 @@ class PasteDTO
 {
     public string $title;
     public string $paste;
-    public int $language;
+    public string $language;
     public int $activity;
     public int $access;
 

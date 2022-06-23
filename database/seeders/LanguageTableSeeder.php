@@ -20,7 +20,7 @@ class LanguageTableSeeder extends Seeder
 
         foreach ($languages as $language) {
             Language::updateOrCreate([
-                'language'=>$language,
+                'language'=>$language->name,
             ]);
         }
 
