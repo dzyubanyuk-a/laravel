@@ -30,6 +30,8 @@ class Activity extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['activity'];
+    protected $guarded = ['id'];
 
     public function paste(): HasMany
     {

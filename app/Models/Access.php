@@ -32,6 +32,7 @@ class Access extends Model
 
 
     protected $fillable  = ['access'];
+
     protected $guarded = ['id'];
 
 

@@ -52,6 +52,9 @@ class Paste extends Model
 
     use SoftDeletes;
 
+    protected $fillable = ['title, paste, language_id, access_id, token, user_id, lifetime'];
+    protected $guarded = ['id'];
+
 
 
     public function language(): BelongsTo

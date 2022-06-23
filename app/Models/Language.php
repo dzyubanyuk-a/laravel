@@ -29,6 +29,9 @@ class Language extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['language'];
+    protected $guarded = ['id'];
+
     public function paste()
     {
         return $this->hasMany(Paste::class);
